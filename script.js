@@ -11,7 +11,7 @@ async function checkWeather(city){
     document.querySelector(".temp").innerHTML=Math.round(data.main.temp) +"°C";
     document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
     document.querySelector(".wind").innerHTML=data.wind.speed+" km/h";
-    
+    //added condition
     if(data.weather[0].main=="clouds"){
        weatherIcon.src="images/clouds.png";
     }
@@ -31,6 +31,11 @@ async function checkWeather(city){
 }
 searchBtn.addEventListener("click",()=>{
     checkWeather(searchBox.value);
+})
+searchBtn.addEventListener("keydown",function(event){
+    if(event=="Enter"){
+        checkWeather(searchBox.value);
+    }
 })
 
 checkWeather();
